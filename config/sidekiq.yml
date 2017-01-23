@@ -4,3 +4,8 @@ development:
     - [critical,4]
     - [default, 2]
     - [low]
+production:
+  :queues:
+    - [critical,4]
+    - [default, 2]
+    - [low]
