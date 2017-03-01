@@ -103,7 +103,9 @@ module Oneboxer
         changed = true
         # check if url is a google spreadsheet
         if /^https?:\/\/(?:www\.)?(?:m\.)?(?:docs\.google\.com\/(spreadsheet|spreadsheets))\/.+$/.match(url)
-          element.swap "<iframe src='#{url}&rm=minimal' style='border: 0' width='800' height='600' frameborder='0' scrolling='no' ></iframe>"
+          div_id = url.split('/d/').second.split('/').first
+          hider_div = "<button class='btn' onClick=\"showIframe('#{div_id}')\">Show/Hide Spreadsheet</a></button>"
+          element.swap "#{hider_div}<iframe style='display: none;' id='#{div_id}' src='#{url}&rm=minimal' style='border: 0' width='800' height='600' frameborder='0' scrolling='no' ></iframe>"
         else
           element.swap parsed_onebox.to_html
         end
