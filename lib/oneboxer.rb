@@ -105,7 +105,8 @@ module Oneboxer
         if /^https?:\/\/(?:www\.)?(?:m\.)?(?:docs\.google\.com\/(spreadsheet|spreadsheets))\/.+$/.match(url)
           div_id = url.split('/d/').second.split('/').first
           hider_div = "<button class='btn' onClick=\"showIframe('#{div_id}')\">Show/Hide Spreadsheet</a></button>"
-          element.swap "#{hider_div}<iframe style='display: none;' id='#{div_id}' src='#{url}&rm=minimal' style='border: 0' width='800' height='600' frameborder='0' scrolling='no' ></iframe>"
+          preview_div = "<div style='display: visible;' id='#{div_id}_preview'>#{parsed_onebox.to_html}</div>"
+          element.swap "#{hider_div}<br>#{preview_div}<iframe style='display: none;' id='#{div_id}' src='#{url}' style='border: 0' width='800' height='600' frameborder='0' scrolling='no' ></iframe>"
         else
           element.swap parsed_onebox.to_html
         end

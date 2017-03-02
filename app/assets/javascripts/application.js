@@ -99,4 +99,5 @@
 
 function showIframe(classId) {
   $('#' + classId).toggle();
+  $('#' + classId + '_preview').toggle();
 }
